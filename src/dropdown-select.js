@@ -171,7 +171,7 @@ angular.module('dropdownSelect', ['clickOut'])
                                 scope.focusedIndex++;
                             }
                         } else {
-                            scope.focusedIndex && scope.focusedIndex--;
+                            scope.focusedIndex > 0 && scope.focusedIndex--;
                         }
 
                         scope.dropOpened = true;
