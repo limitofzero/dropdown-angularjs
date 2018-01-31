@@ -1,0 +1,113 @@
+@font-face {
+  font-family: 'Roboto-Regular';
+  /* Имя шрифта */
+  src: url(../../assets/fonts/Roboto-Regular.ttf);
+  /* Путь к файлу со шрифтом */
+}
+dropdown-select {
+  position: relative;
+  font-size: 14px;
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+  font-family: 'Roboto-Regular';
+}
+.disabled-list {
+  background-color: #E4E5E6;
+}
+.disabled-list input[type="text"] {
+  background-color: inherit;
+}
+.disabled-list .selected-list__multiple-item {
+  background-color: #808080;
+}
+.selected-list {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 0.7em 0.7em 0.5em 0.7em;
+  border-radius: 0.2em;
+  width: 100%;
+  border: 1px solid #D9DBDD;
+  position: relative;
+  box-sizing: border-box;
+}
+.selected-list_focused {
+  border-color: #1C5AD8;
+}
+.selected-list__item {
+  flex: 1;
+  cursor: pointer;
+  padding: 0.3em;
+  margin-bottom: 0.2em;
+}
+.selected-list__multiple-item {
+  display: flex;
+  align-items: center;
+  border-radius: 0.2em;
+  padding: 0.3em;
+  margin-bottom: 0.2em;
+  background-color: #1C5AD8;
+  margin-right: 0.2em;
+  color: #fff;
+  cursor: pointer;
+}
+.selected-list__multiple-item .delete-btn {
+  width: 0.6em;
+  height: 0.6em;
+  margin-left: 0.5em;
+  background: url("../../assets/img/delete.svg");
+  background-size: contain;
+}
+.selected-list__input {
+  flex: 1;
+  padding: 0.2em;
+  margin-bottom: 0.2em;
+}
+.selected-list__input input[type="text"] {
+  width: 100%;
+  height: 100%;
+  font-size: 1em;
+  border: none;
+  outline: none;
+}
+.selected-list__input input[type="text"]::placeholder {
+  color: #000;
+}
+.selected-list__state {
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  width: 16px;
+  height: 16px;
+}
+.selected-list__state_opened {
+  background: url("../../assets/img/up.png");
+}
+.selected-list__state_closed {
+  background: url("../../assets/img/down.png");
+}
+.selected-list__state_search {
+  background: url("../../assets/img/search.png");
+}
+.dropdown-list {
+  display: flex;
+  position: absolute;
+  margin-top: 0.3em;
+  z-index: 9999;
+  background: #fff;
+  border-radius: 0.2em;
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid #1C5AD8;
+  flex-direction: column;
+  max-height: 13em;
+  overflow: auto;
+}
+.dropdown-list__item {
+  flex: 1;
+  padding: 1em;
+  cursor: pointer;
+}
+.dropdown-list__item_focused {
+  background-color: #1C5AD8;
+}

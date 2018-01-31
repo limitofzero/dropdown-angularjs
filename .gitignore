@@ -1,0 +1,8 @@
+node_modules
+ncp-debug.log
+npm-debug.log
+
+node_modules
+*.log*
+chrome-user-data
+.vscode

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="./build/css/dropdown-select.css" rel="stylesheet">
+    <script src="./node_modules/angular/angular.js"></script>
+    <script src="./build/dropdown.js"></script>
+    <script src="./app.js"></script>
+</head>
+<body ng-controller="appController as ctrl">
+    <div style="display: inline-block; width: 300px;">
+        <dropdown-select options="item.name in ctrl.options" 
+            disabled="false"
+            disabled-placeholder="You can't write here"
+            placeholder="Choose an option"
+            ng-change="ctrl.onChange()"
+            ng-model="ctrl.dropdownValues">
+        </dropdown-select>
+
+        <br>
+
+        <dropdown-select options="item.name in ctrl.options" 
+            disabled="true"
+            disabled-placeholder="You can't write here"
+            placeholder="Choose an option"
+            ng-change="ctrl.onChange()"
+            ng-model="ctrl.dropdownValues">
+        </dropdown-select>
+
+        <br>
+
+        <dropdown-select options="item.name in ctrl.options" 
+            placeholder="Choose an option"
+            disabled-placeholder="You can't write here"
+            disabled="false"
+            ng-change="ctrl.onChange()"
+            ng-model="ctrl.testValues" multiple="true">
+        </div>
+</body>
+</html>
