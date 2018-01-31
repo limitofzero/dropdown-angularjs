@@ -14,7 +14,7 @@ angular.module('clickOut' ,[])
                     scope.$apply();
                 }
 
-                scope.$on("$destroy", () => angular.element($window).off('click', onClick));
+                scope.$on('$destroy', () => angular.element($window).off('click', onClick));
             }
         };
     }]);

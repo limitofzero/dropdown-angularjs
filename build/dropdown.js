@@ -14,7 +14,7 @@ angular.module('clickOut' ,[])
                     scope.$apply();
                 }
 
-                scope.$on("$destroy", () => angular.element($window).off('click', onClick));
+                scope.$on('$destroy', () => angular.element($window).off('click', onClick));
             }
         };
     }]);
@@ -63,9 +63,10 @@ angular.module('dropdownSelect', ['clickOut'])
                 scope.isMultiple = !!attrs.multiple;
                 scope.query = '';
                 scope.values = [];
+                scope.focusedIndex = -1;//индекс элемента, на котором стоит фокус
 
                 if(regexp.options.test(options) === false) {
-                    throw new Error("Выражение в options не соответсвует api");
+                    throw new Error('Выражение в options не соответсвует api');
                 }
 
                 const matchedOptions = options.match(regexp.withoutSpaces),
@@ -75,13 +76,15 @@ angular.module('dropdownSelect', ['clickOut'])
                 parsedDisplayName = $parse(modelName),//получаем $parse для label 
                 parsedCollection = $parse(collectionName);//коллекция объектов
 
-                attrs.$observe('disabled', function (value) {
-                    scope.disabled = value === "true";
-                    scope.disabled && element.find('input').prop('disabled', value);
+                attrs.$observe('disabled',(value) => {
+                    scope.disabled = value === 'true';
+                    if(scope.disabled) {
+                        element.find('input').prop('disabled', value);
+                    } else {
+                        element.find('input').removeAttr('disabled');
+                    } 
                     scope.placeholder = scope.disabled ? disabledPlaceholder : placeholder;
                 });
-
-                scope.focusedIndex = -1;
                 
                 //отслеживает изменения модели todo добавить отвязку в destroy
                 const modelWatcher = scope.$parent.$watch(attrs.ngModel, (newVal) => {
@@ -226,7 +229,7 @@ angular.module('dropdownSelect', ['clickOut'])
                 }
 
                 /**
-                 * Снимает или ставит класс, показывающий, что элемент находится в фокусе
+                 * Снимает или ставит класс css, показывающий, что элемент находится в фокусе
                  * @param {*} list - ссылка на дом элемент списка
                  * @param {*} index - индекс элемента, которому необходимо удалить/установить класс фокуса
                  * @param {*} set -boolean, если true, то добавить, иначе - снять
@@ -275,7 +278,7 @@ angular.module('dropdownSelect', ['clickOut'])
                     return cover;
                 }
 
-                scope.$on("$destroy", () => modelWatcher());
+                scope.$on('$destroy', () => modelWatcher());
 
                 scope.queryChanged();
             }
